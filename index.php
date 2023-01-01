@@ -11,6 +11,9 @@ header("Location: installer.php");
 // ini_set('display_errors', 0);
 $data = fetch($logindata['customer_id'], $logindata['license_key']);
 $services = json_decode($data, true);
+$title = $services['title'];
+// echo $title;
+unset($services['title']);
 ini_set('memory_limit', '80M');
 $result = array();
 if($services == null || !count($services) > 0 || isset($services[""]) && $services[""] == null){
@@ -91,7 +94,6 @@ $crossbig = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="
                               d="M14 7C14 10.866 10.866 14 7 14C3.13401 14 0 10.866 0 7C0 3.13401 3.13401 0 7 0C10.866 0 14 3.13401 14 7ZM4.83904 3.91096C4.58276 3.65468 4.16724 3.65468 3.91096 3.91096C3.65468 4.16724 3.65468 4.58276 3.91096 4.83904L6.07192 7L3.91096 9.16096C3.65468 9.41724 3.65468 9.83276 3.91096 10.089C4.16724 10.3453 4.58276 10.3453 4.83904 10.089L7 7.92808L9.16096 10.089C9.41724 10.3453 9.83276 10.3453 10.089 10.089C10.3453 9.83276 10.3453 9.41724 10.089 9.16096L7.92808 7L10.089 4.83904C10.3453 4.58276 10.3453 4.16724 10.089 3.91096C9.83276 3.65468 9.41724 3.65468 9.16096 3.91096L7 6.07192L4.83904 3.91096Z"
                               fill="#E95858"></path>
                     </svg>';
-
 ?>
 
 
@@ -105,14 +107,14 @@ $crossbig = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://status.yseanyit.de">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ySenayIT Status">
-    <meta property="og:description" content="ySenayIT Status">
+    <meta property="og:title" content="<?= $title ?>">
+    <meta property="og:description" content="<?= $title ?>">
     <meta content="Find out why Lattice is trusted by the best places to work." property="og:description">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="status.zeneg.de">
     <meta property="twitter:url" content="https://status.zeneg.de">
-    <meta name="twitter:title" content="ySenayIT Status">
-    <meta name="twitter:description" content="ySenayIT Status">
+    <meta name="twitter:title" content="<?= $title ?>">
+    <meta name="twitter:description" content="<?= $title ?>">
     <meta name="twitter:image" content="https://status.zeneg.de/api/og-image?name=ySenayIT&amp;favicon=">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"
           data-optimized-fonts="true">
@@ -239,7 +241,7 @@ $crossbig = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="
     <style type="text/css" data-styled-jsx="">body, html {
             font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
         }</style>
-    <title>ySenayIT Status</title>
+    <title><?= $title ?></title>
     <script src="/va/script.js" defer=""></script>
 </head>
 <body>
